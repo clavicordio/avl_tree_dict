@@ -15,8 +15,9 @@ namespace avl_tree_io
 		static void PrintDict(const avl_tree::AvlTree& tree);
 	};
 
-	struct TreeReadError : public std::runtime_error
+	class TreeReadError : public std::runtime_error
 	{
+	public:
 		TreeReadError(const char* m) : std::runtime_error(m) { };
 	};
 } // namespace

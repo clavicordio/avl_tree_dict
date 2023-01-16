@@ -26,11 +26,11 @@ void MapDemo()
 {
 	avl_tree::AvlTree map;
 	map["hello"] = 10;
-	map["salam"] = std::vector<int>({ 10,20,30,50 });
+	map["merhaba"] = std::vector<int>({ 10,20,30,50 });
 	map["privet"] = 300;
 	map["hola"] = "sinhrofazatron";
 	map["bonjour"] = std::vector<double>({ 12,14,15,16 });
-	map.pop("salam");
+	map.pop("merhaba");
 
 	try
 	{
@@ -54,7 +54,7 @@ void ParametersDemo()
 
 int main()
 {
-	//AvlTreeDemo();
-	//MapDemo();
+	/*AvlTreeDemo();
+	MapDemo();*/
 	ParametersDemo();
 }

@@ -5,6 +5,19 @@
 
 namespace avl_tree_io
 {
+	static std::string strip(std::string s)
+	{
+		unsigned int ltrim_pos = 0;
+		while (std::isspace(s[ltrim_pos]))
+			++ltrim_pos;
+
+		unsigned int rtrim_pos = s.size() - 1;
+		while (std::isspace(s[rtrim_pos]))
+			--rtrim_pos;
+
+		return s.substr(ltrim_pos, rtrim_pos);
+	}
+
 	avl_tree::AvlTree IO::ReadParametersFromFile(std::ifstream& fs)
 	{
 		avl_tree::AvlTree parameters;
@@ -32,8 +45,8 @@ namespace avl_tree_io
 			}
 			else if (value_type == "string")
 			{
-				std::string value;
-				ss >> value;
+				unsigned int stream_pos = ss.tellg();
+				std::string value = strip(line.substr(stream_pos));
 				parameters[key] = value;
 			}
 			else if (value_type == "intarray")
