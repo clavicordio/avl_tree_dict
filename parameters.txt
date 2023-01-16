@@ -1,0 +1,5 @@
+int 		aboba 	12 
+double 		boba 		2.123
+string 		oba 		abobus
+intarray 	ba 		4 		1 2 3 4
+doublearray 	a 		5		1 2 3.14 4 5.0
