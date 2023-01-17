@@ -15,11 +15,17 @@ namespace avl_tree_io
 		static void PrintDict(const avl_tree::AvlTree& tree);
 	};
 
-	class TreeReadError : public std::runtime_error
-	{
-	public:
-		TreeReadError(const char* m) : std::runtime_error(m) { };
+	struct TreeReadError : public std::runtime_error
+	{	
+		TreeReadError(const char* m) : std::runtime_error(m) { };  
 	};
+
+	struct FileNotFoundError : public std::runtime_error
+	{
+		FileNotFoundError() : std::runtime_error("Error reading file.") { }
+	};
+
+
 } // namespace
 
 

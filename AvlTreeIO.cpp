@@ -7,11 +7,14 @@ namespace avl_tree_io
 {
 	static std::string strip(std::string s)
 	{
-		unsigned int ltrim_pos = 0;
+		if (s.size() == 0)
+			return s;
+		
+		auto ltrim_pos = 0;
 		while (std::isspace(s[ltrim_pos]))
 			++ltrim_pos;
 
-		unsigned int rtrim_pos = s.size() - 1;
+		auto rtrim_pos = s.size() - 1;
 		while (std::isspace(s[rtrim_pos]))
 			--rtrim_pos;
 
@@ -20,6 +23,11 @@ namespace avl_tree_io
 
 	avl_tree::AvlTree IO::ReadParametersFromFile(std::ifstream& fs)
 	{
+		if (fs.fail())
+		{
+			throw avl_tree_io::FileNotFoundError();
+		}
+
 		avl_tree::AvlTree parameters;
 		std::string line;
 		while (std::getline(fs, line))
@@ -45,7 +53,7 @@ namespace avl_tree_io
 			}
 			else if (value_type == "string")
 			{
-				unsigned int stream_pos = ss.tellg();
+				auto stream_pos = ss.tellg();
 				std::string value = strip(line.substr(stream_pos));
 				parameters[key] = value;
 			}
@@ -79,7 +87,7 @@ namespace avl_tree_io
 			}
 			else
 			{
-				throw TreeReadError("Can't parse data type.");
+				throw avl_tree_io::TreeReadError("Can't parse data type.");
 			}
 		}
 		return parameters;

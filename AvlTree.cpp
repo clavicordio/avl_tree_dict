@@ -279,7 +279,7 @@ namespace avl_tree
         return Delete_(key);
     }
 
-    static inline void findKeys(std::shared_ptr<AvlTreeNode> node, std::vector<std::string>& keys)
+    static void findKeys(std::shared_ptr<AvlTreeNode> node, std::vector<std::string>& keys)
     {
         if (node == nullptr)
             return;

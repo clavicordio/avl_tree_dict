@@ -47,6 +47,11 @@ void MapDemo()
 void ParametersDemo()
 {
 	auto fs = std::ifstream("parameters.txt");
+	if (fs.fail())
+	{
+		std::cout << "Failed to open parameters file. Aborting." << std::endl;
+		return;
+	}
 	auto parameters = avl_tree_io::IO::ReadParametersFromFile(fs);
 
 	avl_tree_io::IO::PrintDict(parameters);
