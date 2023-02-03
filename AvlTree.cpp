@@ -254,7 +254,7 @@ namespace avl_tree
 
     }
 
-    TValue AvlTree::get(const std::string& key) const
+    TValue const& AvlTree::get(const std::string& key) const
     {
         auto search_result = Search_(key);
 

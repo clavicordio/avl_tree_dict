@@ -34,7 +34,7 @@ namespace avl_tree
 	public:
 
 		TValue& operator[] (const std::string& key);
-		TValue get(const std::string& key) const;
+		TValue const& get(const std::string& key) const;
 		TValue pop(const std::string& key);
 
 		std::vector<std::string> keys() const;
